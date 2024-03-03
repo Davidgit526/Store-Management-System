@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://img.freepik.com/free-photo/digital-marketing-concept-shopping-online-mobile-application-web-banner-background-3d-rendering_68971-443.jpg?size=664&ext=jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 80%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4169e1;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #6495ed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Product Details</h1>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+      </tr>
+      <% products.forEach(product => { %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.cost %></td>
+        </tr>
+      <% }); %>
+    </table>
+
+    <% let totalCost = 0; %>
+    <% products.forEach(product => { %>
+      <% totalCost += product.quantity * product.cost; %>
+    <% }); %>
+    <h2>Total Cost: <%= totalCost %></h2>
+    <form action="/" method="get">
+      <button type="submit"> Explore more products </button>
+    </form>
+  </div>
+</body>
+</html>
