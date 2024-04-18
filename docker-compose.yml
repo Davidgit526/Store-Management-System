@@ -1,22 +1,17 @@
 version: '3.8'
- 
+
 services:
-  nodejs:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: node-container
-    #restart: unless-stopped
+  king-18:
+    image: david-18
+    build: .
     ports:
-      - "3000:3000"
+      - '7002:3000'
     environment:
-      MONGO_URI: mongodb://mongo:27017/store
+      - MONGODB_URI:'mongodb://mongo:27017/store'
     depends_on:
-      - mongo
-  mongo:
-      container_name: mongodb-container
-      image: mongo
-      volumes:
-        - ./data:/data/Project
-      ports:
-        - 27017:27017
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
